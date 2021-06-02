@@ -74,7 +74,7 @@ class simple_image_download:
 
     def download(self, keywords, limit, extensions={'.jpg', '.png', '.ico', '.gif', '.jpeg'}):
         keyword_to_search = [str(item).strip() for item in keywords.split(',')]
-        main_directory = "simple_images/"
+        main_directory = "/"
         i = 0
 
         things = len(keyword_to_search) * limit
@@ -123,7 +123,7 @@ class simple_image_download:
                         if file_extension == '.png' and not google_image_seen:
                             google_image_seen = True
                             raise ValueError()
-                        file_name = str(keyword_to_search[i]) + "_" + str(j + 1) + file_extension
+                        file_name = str("image") + file_extension
                         with open(os.path.join(path, file_name), 'wb') as file:
                             file.write(r.content)
                         bar.update(bar.currval + 1)
@@ -138,7 +138,7 @@ class simple_image_download:
 
 
     def _create_directories(self, main_directory, name):
-        name = name.replace(" ", "_")
+        name = "images"
         try:
             if not os.path.exists(main_directory):
                 os.makedirs(main_directory)
