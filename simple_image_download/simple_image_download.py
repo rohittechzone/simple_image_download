@@ -110,7 +110,7 @@ class simple_image_download:
 
                     except Exception as e:
                         break
-                path = main_directory + keyword_to_search[i].replace(" ", "_")
+                path = main_directory + "images"
 
                 try:
                     r = requests.get(object_raw, allow_redirects=True, timeout=1)
@@ -123,7 +123,7 @@ class simple_image_download:
                         if file_extension == '.png' and not google_image_seen:
                             google_image_seen = True
                             raise ValueError()
-                        file_name = str("image") + file_extension
+                        file_name = "image" + file_extension
                         with open(os.path.join(path, file_name), 'wb') as file:
                             file.write(r.content)
                         bar.update(bar.currval + 1)
@@ -138,12 +138,12 @@ class simple_image_download:
 
 
     def _create_directories(self, main_directory, name):
-        name = "images"
+        name = name.replace(" ", "_")
         try:
             if not os.path.exists(main_directory):
                 os.makedirs(main_directory)
                 time.sleep(0.2)
-                path = (name)
+                path = "image"
                 sub_directory = os.path.join(main_directory, path)
                 if not os.path.exists(sub_directory):
                     os.makedirs(sub_directory)
