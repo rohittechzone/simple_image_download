@@ -74,7 +74,7 @@ class simple_image_download:
 
     def download(self, keywords, limit, extensions={'.jpg', '.png', '.ico', '.gif', '.jpeg'}):
         keyword_to_search = [str(item).strip() for item in keywords.split(',')]
-        main_directory = "/"
+        main_directory = "images/"
         i = 0
 
         things = len(keyword_to_search) * limit
@@ -143,12 +143,12 @@ class simple_image_download:
             if not os.path.exists(main_directory):
                 os.makedirs(main_directory)
                 time.sleep(0.2)
-                path = "image"
+                path = "images"
                 sub_directory = os.path.join(main_directory, path)
                 if not os.path.exists(sub_directory):
                     os.makedirs(sub_directory)
             else:
-                path = (name)
+                path = "images"
                 sub_directory = os.path.join(main_directory, path)
                 if not os.path.exists(sub_directory):
                     os.makedirs(sub_directory)
