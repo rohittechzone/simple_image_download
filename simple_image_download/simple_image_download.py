@@ -97,6 +97,7 @@ class simple_image_download:
                 while (True):
                     try:
                         new_line = raw_html.find('"https://', end_object + 1)
+                        print(new_line)
                         end_object = raw_html.find('"', new_line + 1)
 
                         buffor = raw_html.find('\\', new_line + 1, end_object)
